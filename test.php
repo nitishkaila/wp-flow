@@ -10,4 +10,3 @@ echo 'this after change';
 echo 'this after change1';
 echo 'this after change4';
 echo 'this after change5';
-echo 'this after change6';
