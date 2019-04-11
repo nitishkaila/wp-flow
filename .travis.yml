@@ -26,7 +26,9 @@ before_install:
   # Install PHP_CodeSniffer.
   - if [[ "$SNIFF" == "1" ]]; then git clone -b master --depth 1 https://github.com/squizlabs/PHP_CodeSniffer.git $PHPCS_DIR; fi
   # Install WordPress Coding Standards.
-  - if [[ "$SNIFF" == "1" ]]; then git clone -b master --depth 1 https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git $SNIFFS_DIR; fi
+  #- if [[ "$SNIFF" == "1" ]]; then git clone -b master --depth 1 https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git $SNIFFS_DIR; fi
+  # Install WordPress VIP Coding Standards.
+  - if [[ "$SNIFF" == "1" ]]; then git clone -b master --depth 1 https://github.com/Automattic/VIP-Coding-Standards.git $SNIFFS_DIR; fi
   # Set install path for WordPress Coding Standards.
   - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --config-set installed_paths $SNIFFS_DIR; fi
   # After CodeSniffer install you should refresh your path.
@@ -48,10 +50,6 @@ script:
   - if [[ "$SNIFF" == "1" ]]; then export SNIFFS_DIR=/tmp/sniffs; fi
   #- if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --ignore=*/wp-tests/*,*/tests/* -p . --standard=WordPress $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep .php) --runtime-set ignore_warnings_on_exit 1; fi  
   #- if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --ignore=*/wp-tests/*,*/tests/* -p --standard=WordPress $(git diff --name-only | grep .php) --runtime-set ignore_warnings_on_exit 1; fi
-  - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --ignore=*/wp-tests/*,*/tests/* -p --standard=WordPress $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep .php) --runtime-set ignore_warnings_on_exit 1; fi  
-  #- CHANGED_FILES=$(git diff)
-  #- echo $CHANGED_FILES
-  #- echo $TRAVIS_COMMIT_RANGE
-  
+  - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --ignore=*/wp-tests/*,*/tests/* -p --standard=WordPressVIPMinimum $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep .php) --runtime-set ignore_warnings_on_exit 1; fi    
   #-- - cd wp-tests/spec && bundle exec rspec test.rb
 
