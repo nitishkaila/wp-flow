@@ -34,7 +34,7 @@ before_install:
   - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --config-set installed_paths $SNIFFS_DIR; fi
   # After CodeSniffer install you should refresh your path.
   - if [[ "$SNIFF" == "1" ]]; then phpenv rehash; fi
-  - echo phpcs -i;
+  - echo $SNIFFS_DIR
   # Install composer packages before trying to activate themes or plugins
   # - composer install
 
