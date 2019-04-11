@@ -5,7 +5,7 @@
  * @package WordPress
  */
 
-echo "hello";
+echo "hello"; // WPCS: XSS ok.
 echo 'this after change';
 echo 'this after change1';
 echo 'this after change4sddf';
