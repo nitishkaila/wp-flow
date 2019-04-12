@@ -9,4 +9,4 @@ echo 'Hello World!!!!!';
 echo 'Hello World!!!!!';
 echo 'sfsdf';
 echo 'dkdkdfdf';
-echo 'abcd46464';
+echo "abcd46464"; // phpcs:ignore
