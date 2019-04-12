@@ -5,6 +5,10 @@
  * @package WordPress
  */
 
+$abc = "abc";
+?>
+    <a class="<?php echo $abc; ?>">sfsfdfsdf</a>
+<?php
 echo 'Hello World!!!!!';
 echo 'Hello World!!!!!';
 echo 'sfsdffgfg';
