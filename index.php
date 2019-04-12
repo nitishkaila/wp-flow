@@ -7,7 +7,7 @@
 
 $abc = "abc";
 ?>
-    <a class="<?php echo $abc; // phpcs:ignore?>">sfsfdfsdf</a>
+    <a class="<?php echo $abc;?>">sfsfdfsdf</a>
 <?php
 echo 'Hello World!!!!!';
 echo 'Hello World!!!!!';
