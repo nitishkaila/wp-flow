@@ -50,7 +50,7 @@ script:
   - if [[ "$SNIFF" == "1" ]]; then export SNIFFS_DIR=/tmp/sniffs; fi
   #- if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --ignore=*/wp-tests/*,*/tests/* -p . --standard=WordPress $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep .php) --runtime-set ignore_warnings_on_exit 1; fi  
   #- if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --ignore=*/wp-tests/*,*/tests/* -p --standard=WordPress $(git diff --name-only | grep .php) --runtime-set ignore_warnings_on_exit 1; fi
-  - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --ignore=*/wp-tests/*,*/tests/* -p --standard=WordPress $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep .php) --runtime-set ignore_warnings_on_exit 1; fi    
+  - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --ignore=*/wp-tests/*,*/tests/* -p --standard=WordpressVIPMinimum $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep .php) --runtime-set ignore_warnings_on_exit 1; fi    
   #- echo $SNIFFS_DIR  
   #-- - cd wp-tests/spec && bundle exec rspec test.rb
 
