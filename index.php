@@ -6,9 +6,6 @@
  */
 
 $abc = "abcddd";
-?>
-    <a class="<?php echo $abc;?>">sfsfdfsdf</a>
-<?php
 $a = wp_is_mobile();
 echo 'Hello World!!!!!';
 echo 'Hello World!!!!!';
