@@ -5,7 +5,7 @@
  * @package WordPress
  */
 
-$abc = "abcd";
+$abc = "abcddd";
 ?>
     <a class="<?php echo $abc;?>">sfsfdfsdf</a>
 <?php
