@@ -5,7 +5,7 @@
  * @package WordPress
  */
 
-$abc = "abcddd";
+$abc = "abcddddd";
 $a = wp_is_mobile();
 echo 'Hello World!!!!!';
 echo 'Hello World!!!!!';
