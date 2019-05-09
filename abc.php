@@ -7,6 +7,3 @@
 
 echo 'hello world';
 echo 'hello world123dfdfdf4';
-$a = "afsfsd";
-?>
-<a class="<?php echo $a; ?>">aad</a>
