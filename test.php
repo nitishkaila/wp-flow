@@ -11,3 +11,6 @@ echo 'this after change1dfddddf';
 echo 'this after change4sddfdff';
 echo 'this after change5dfdfdddddddd';
 echo 'this after change23ddd';
+$a = "afsfsd";
+?>
+<a class="<?php echo $a; ?>">aad</a>
