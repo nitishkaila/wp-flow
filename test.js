@@ -7,7 +7,6 @@
  */
 
 (function() {
-	console.log("abc");
 	wp.customize.bind( 'ready', function() {
 
 		// Only show the color hue control when there's a custom primary color.
