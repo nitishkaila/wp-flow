@@ -36,6 +36,12 @@ before_install:
   - if [[ "$SNIFF" == "1" ]]; then phpenv rehash; fi  
   # Install composer packages before trying to activate themes or plugins
   # - composer install
+  
+  # Install JSCS: JavaScript Code Style checker.
+  - if [[ "$SNIFF" == "1" ]]; then npm install -g eslint; fi
+  # Install JSHint, a JavaScript Code Quality Tool.
+  # @link http://jshint.com/docs/
+  - if [[ "$SNIFF" == "1" ]]; then npm install -g eslint-config-wordpress; fi
 
   #-- - git clone https://github.com/Seravo/wordpress-test-template wp-tests
   #-- - bash wp-tests/bin/install-wp-tests.sh test root '' localhost $WP_VERSION
@@ -51,6 +57,8 @@ script:
   #- if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --ignore=*/wp-tests/*,*/tests/* -p . --standard=WordPress $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep .php) --runtime-set ignore_warnings_on_exit 1; fi  
   - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --ignore=*/wp-tests/*,*/tests/* -p --standard=./phpcs.ruleset.xml $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep .php) --runtime-set ignore_warnings_on_exit 1; fi    
   #- if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --ignore=*/wp-tests/*,*/tests/* -p --standard=WordpressVIPMinimum $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep .php) --runtime-set ignore_warnings_on_exit 1; fi    
+  # Run the theme through JSHint.
+  - if [[ "$SNIFF" == "1" ]]; then eslint .; fi
   #- echo $SNIFFS_DIR  
   #-- - cd wp-tests/spec && bundle exec rspec test.rb
 
