@@ -8,7 +8,7 @@
 
 (function() {
 	wp.customize.bind( 'ready', function() {
-		console.log('abc');
+	
 		// Only show the color hue control when there's a custom primary colors.
 		wp.customize( 'primary_color', function( setting ) {
 			wp.customize.control( 'primary_color_hue', function( control ) {
