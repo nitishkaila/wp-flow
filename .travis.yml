@@ -21,10 +21,10 @@ branches:
 
 before_install:
   - phpenv config-rm xdebug.ini
+  - if [[ "$SNIFF" == "1" ]]; then composer require automattic/vipwpcs; fi
   - if [[ "$SNIFF" == "1" ]]; then export PHPCS_DIR=/vendor/squizlabs/php_codesniffer; fi
   - if [[ "$SNIFF" == "1" ]]; then export SNIFFS_DIR=/vendor/wp-coding-standards/wpcs; fi
   #- if [[ "$SNIFF" == "1" ]]; then export PATH="$HOME/.composer/vendor/bin:$PATH"; fi
-  - if [[ "$SNIFF" == "1" ]]; then composer require automattic/vipwpcs; fi
   
   # Install PHP_CodeSniffer.
   #- if [[ "$SNIFF" == "1" ]]; then git clone -b master --depth 1 https://github.com/squizlabs/PHP_CodeSniffer.git $PHPCS_DIR; fi
