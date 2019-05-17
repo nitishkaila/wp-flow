@@ -2,4 +2,4 @@
 
 $a = "test";
 ?>
-<a class="<?php echo $a;?>">test</a>
+<a class="<?php echo esc_attr($a);?>">test</a>
