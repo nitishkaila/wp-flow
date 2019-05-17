@@ -21,17 +21,23 @@ branches:
 
 before_install:
   - phpenv config-rm xdebug.ini
-  - if [[ "$SNIFF" == "1" ]]; then export PHPCS_DIR=/tmp/phpcs; fi
-  - if [[ "$SNIFF" == "1" ]]; then export SNIFFS_DIR=/tmp/sniffs; fi
+  #- if [[ "$SNIFF" == "1" ]]; then export PHPCS_DIR=/tmp/phpcs; fi
+  #- if [[ "$SNIFF" == "1" ]]; then export SNIFFS_DIR=/tmp/sniffs; fi
+  - if [[ "$SNIFF" == "1" ]]; then export PATH="$HOME/.composer/vendor/bin:$PATH"; fi
+  - if [[ "$SNIFF" == "1" ]]; then
+      composer require composer require automattic/vipwpcs;
+      phpcs --config-set installed_paths $HOME/.composer/vendor/wp-coding-standards/wpcs;
+    fi
+  
   # Install PHP_CodeSniffer.
-  - if [[ "$SNIFF" == "1" ]]; then git clone -b master --depth 1 https://github.com/squizlabs/PHP_CodeSniffer.git $PHPCS_DIR; fi
+  #- if [[ "$SNIFF" == "1" ]]; then git clone -b master --depth 1 https://github.com/squizlabs/PHP_CodeSniffer.git $PHPCS_DIR; fi
   # Install WordPress Coding Standards.
-  - if [[ "$SNIFF" == "1" ]]; then git clone -b master --depth 1 https://github.com/nitishkaila/WordPress-Coding-Standards.git $SNIFFS_DIR; fi
+  #- if [[ "$SNIFF" == "1" ]]; then git clone -b master --depth 1 https://github.com/nitishkaila/WordPress-Coding-Standards.git $SNIFFS_DIR; fi
   # Install WordPress VIP Coding Standards.  
   #- if [[ "$SNIFF" == "1" ]]; then git clone -b master --depth 1 https://github.com/nitishkaila/VIP-Coding-Standards.git $SNIFFS_DIR; fi
   
   # Set install path for WordPress Coding Standards.
-  - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --config-set installed_paths $SNIFFS_DIR; fi
+  #- if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --config-set installed_paths $SNIFFS_DIR; fi
   # After CodeSniffer install you should refresh your path.
   - if [[ "$SNIFF" == "1" ]]; then phpenv rehash; fi  
   # Install composer packages before trying to activate themes or plugins
@@ -53,10 +59,12 @@ script:
   # for example: `--standard=wpcs.xml`.
   # You can use any of the normal PHPCS command line arguments in the command:
   # https://github.com/squizlabs/PHP_CodeSniffer/wiki/Usage
-  - if [[ "$SNIFF" == "1" ]]; then export PHPCS_DIR=/tmp/phpcs; fi
-  - if [[ "$SNIFF" == "1" ]]; then export SNIFFS_DIR=/tmp/sniffs; fi
+  #- if [[ "$SNIFF" == "1" ]]; then export PHPCS_DIR=/tmp/phpcs; fi
+  #- if [[ "$SNIFF" == "1" ]]; then export SNIFFS_DIR=/tmp/sniffs; fi
+  - if [[ "$SNIFF" == "1" ]]; then export PATH="$HOME/.composer/vendor/bin:$PATH"; fi
+  - if [[ "$SNIFF" == "1" && $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep .php) ]]; then $HOME/.composer/vendor/wp-coding-standards/wpcs --ignore=*/wp-tests/*,*/tests/* -p --standard=./phpcs.ruleset.xml $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep .php) --runtime-set ignore_warnings_on_exit 1; fi    
   #- if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --ignore=*/wp-tests/*,*/tests/* -p . --standard=WordPress $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep .php) --runtime-set ignore_warnings_on_exit 1; fi  
-  - if [[ "$SNIFF" == "1" && $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep .php) ]]; then $PHPCS_DIR/bin/phpcs --ignore=*/wp-tests/*,*/tests/* -p --standard=./phpcs.ruleset.xml $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep .php) --runtime-set ignore_warnings_on_exit 1; fi    
+  #- if [[ "$SNIFF" == "1" && $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep .php) ]]; then $PHPCS_DIR/bin/phpcs --ignore=*/wp-tests/*,*/tests/* -p --standard=./phpcs.ruleset.xml $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep .php) --runtime-set ignore_warnings_on_exit 1; fi    
   #- if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --ignore=*/wp-tests/*,*/tests/* -p --standard=WordpressVIPMinimum $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep .php) --runtime-set ignore_warnings_on_exit 1; fi    
   
   # Run the theme through eslint.
