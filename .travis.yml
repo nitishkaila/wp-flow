@@ -35,7 +35,7 @@ before_install:
   #- if [[ "$SNIFF" == "1" ]]; then git clone -b master --depth 1 https://github.com/nitishkaila/VIP-Coding-Standards.git $SNIFFS_DIR; fi
   
   # Set install path for WordPress Coding Standards.
-  - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --config-set installed_paths $VIP_SNIFFS_DIR; fi
+  - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --config-set installed_paths [$SNIFFS_DIR],[$VIP_SNIFFS_DIR]; fi
   # After CodeSniffer install you should refresh your path.
   - if [[ "$SNIFF" == "1" ]]; then phpenv rehash; fi  
   # Install composer packages before trying to activate themes or plugins
