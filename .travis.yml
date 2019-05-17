@@ -24,6 +24,7 @@ before_install:
   - if [[ "$SNIFF" == "1" ]]; then composer global require automattic/vipwpcs; fi
   - if [[ "$SNIFF" == "1" ]]; then export PHPCS_DIR=$HOME/.config/composer/vendor/squizlabs/php_codesniffer; fi
   - if [[ "$SNIFF" == "1" ]]; then export SNIFFS_DIR=$HOME/.config/composer/vendor/wp-coding-standards/wpcs; fi
+  - if [[ "$SNIFF" == "1" ]]; then export VIP_SNIFFS_DIR=$HOME/.config/composer/vendor/automattic/vipwpcs; fi
   #- if [[ "$SNIFF" == "1" ]]; then export PATH="$HOME/.composer/vendor/bin:$PATH"; fi
   
   # Install PHP_CodeSniffer.
@@ -34,7 +35,7 @@ before_install:
   #- if [[ "$SNIFF" == "1" ]]; then git clone -b master --depth 1 https://github.com/nitishkaila/VIP-Coding-Standards.git $SNIFFS_DIR; fi
   
   # Set install path for WordPress Coding Standards.
-  - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --config-set installed_paths $SNIFFS_DIR; fi
+  - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --config-set installed_paths $SNIFFS_DIR, $VIP_SNIFFS_DIR; fi
   # After CodeSniffer install you should refresh your path.
   - if [[ "$SNIFF" == "1" ]]; then phpenv rehash; fi  
   # Install composer packages before trying to activate themes or plugins
@@ -59,6 +60,7 @@ script:
   #- if [[ "$SNIFF" == "1" ]]; then composer global require automattic/vipwpcs; fi
   - if [[ "$SNIFF" == "1" ]]; then export PHPCS_DIR=$HOME/.config/composer/vendor/squizlabs/php_codesniffer; fi
   - if [[ "$SNIFF" == "1" ]]; then export SNIFFS_DIR=$HOME/.config/composer/vendor/wp-coding-standards/wpcs; fi
+  - if [[ "$SNIFF" == "1" ]]; then export VIP_SNIFFS_DIR=$HOME/.config/composer/vendor/automattic/vipwpcs; fi
   #- if [[ "$SNIFF" == "1" ]]; then export PATH="$HOME/.composer/vendor/bin:$PATH"; fi
   #- if [[ "$SNIFF" == "1" ]]; then phpcs --config-set installed_paths $HOME/.composer/vendor/wp-coding-standards/wpcs; fi
   #- if [[ "$SNIFF" == "1" ]]; then export PATH="$HOME/.composer/vendor/bin:$PATH"; fi
