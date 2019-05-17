@@ -22,8 +22,8 @@ branches:
 before_install:
   - phpenv config-rm xdebug.ini
   - if [[ "$SNIFF" == "1" ]]; then composer require automattic/vipwpcs; fi
-  - if [[ "$SNIFF" == "1" ]]; then export PHPCS_DIR=$HOME/.composer/vendor/squizlabs/php_codesniffer; fi
-  - if [[ "$SNIFF" == "1" ]]; then export SNIFFS_DIR=$HOME/.composer/vendor/wp-coding-standards/wpcs; fi
+  - if [[ "$SNIFF" == "1" ]]; then export PHPCS_DIR=/vendor/squizlabs/php_codesniffer; fi
+  - if [[ "$SNIFF" == "1" ]]; then export SNIFFS_DIR=/vendor/wp-coding-standards/wpcs; fi
   #- if [[ "$SNIFF" == "1" ]]; then export PATH="$HOME/.composer/vendor/bin:$PATH"; fi
   
   # Install PHP_CodeSniffer.
@@ -56,6 +56,7 @@ script:
   # for example: `--standard=wpcs.xml`.
   # You can use any of the normal PHPCS command line arguments in the command:
   # https://github.com/squizlabs/PHP_CodeSniffer/wiki/Usage
+  - composer require automattic/vipwpcs
   #- if [[ "$SNIFF" == "1" ]]; then export PHPCS_DIR=/vendor/squizlabs/php_codesniffer; fi
   - if [[ "$SNIFF" == "1" ]]; then export PHPCS_DIR=$HOME/.composer/vendor/squizlabs/php_codesniffer; fi
   - if [[ "$SNIFF" == "1" ]]; then export SNIFFS_DIR=$HOME/.composer/vendor/wp-coding-standards/wpcs; fi
