@@ -60,9 +60,9 @@ script:
   #- if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --ignore=*/wp-tests/*,*/tests/* -p --standard=WordpressVIPMinimum $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep .php) --runtime-set ignore_warnings_on_exit 1; fi    
   
   # Run the theme through eslint.
-  - if [[ "$SNIFF" == "1" ]]; then eslint .; fi
+  - if [[ "$SNIFF" == "1" && $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep .js) ]]; then eslint $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep .js); fi
   
   # Run the theme through stylelint.
-  - if [[ "$SNIFF" == "1" ]]; then stylelint .; fi
+  - if [[ "$SNIFF" == "1" && $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep .css) ]]; then stylelint $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep .css); fi
   #- echo $SNIFFS_DIR  
   #-- - cd wp-tests/spec && bundle exec rspec test.rb
