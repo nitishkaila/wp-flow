@@ -12,8 +12,4 @@
         <exclude name="WordPressVIPMinimum.Functions.RestrictedFunctions.wp_is_mobile_wp_is_mobile"/>
         <exclude name="WordPressVIPMinimum.Functions.RestrictedFunctions.term_exists_term_exists"/>
     </rule>
-    <rule ref="WordPressVIPMinimum.VIP.RestrictedFunctions">
-        <exclude name="WordPressVIPMinimum.VIP.RestrictedFunctions.wp_is_mobile_wp_is_mobile"/>
-        <exclude name="WordPressVIPMinimum.VIP.RestrictedFunctions.term_exists_term_exists"/>
-    </rule>
 </ruleset>
