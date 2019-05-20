@@ -1,5 +1,5 @@
 (function() {
 
-    var a = 'abc';
+    var a = "abc";
 
 })( jQuery );
