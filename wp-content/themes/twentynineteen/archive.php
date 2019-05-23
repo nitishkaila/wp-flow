@@ -10,6 +10,12 @@
  */
 
 get_header();
+$a = 1;
+$b = 2;
+if ( $a == 2 ) {
+    echo "sdfsdf";
+}
+$dd = json_encode(array("a" => "sdfsdf"));
 ?>
 
 	<section id="primary" class="content-area">
