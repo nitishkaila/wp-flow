@@ -7,5 +7,5 @@ $name = filter_input( INPUT_POST, 'name', FILTER_SANITIZE_STRING );
 <?php
 $args = array(
     'post_type' => 'post',
-    'posts_per_page' => 150
+    'posts_per_page' => -1
 );
