@@ -73,6 +73,14 @@
     "eol-last": 0,
     "space-infix-ops": 0
   },
+  "overrides": [
+    {
+      "files": "*build.js",
+      "rules": {
+        "no-unused-expressions": "off"
+      }
+    }
+  ],
   "env": {
     "jquery": true,
     "es6": true,
