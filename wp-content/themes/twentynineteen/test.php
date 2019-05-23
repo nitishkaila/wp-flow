@@ -2,4 +2,4 @@
 
 $a = "test";
 ?>
-<a class="<?php echo esc_attr($a);?>">test</a>
+<a href="<?php echo esc_url($a);?>">test</a>
