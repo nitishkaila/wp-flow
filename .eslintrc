@@ -10,6 +10,7 @@
   "extends": [ "wordpress" ],
   "rules": {
     "indent": 0,
+    "linebreak-style": 0,
     "space-in-parens": 0,
     "comma-dangle": 0,
     "brace-style": 0,
@@ -69,7 +70,8 @@
     "valid-typeof": 2,
     "array-bracket-spacing": 0,
     "space-before-blocks": 0,
-    "eol-last": 0
+    "eol-last": 0,
+    "space-infix-ops": 0
   },
   "env": {
     "jquery": true,
